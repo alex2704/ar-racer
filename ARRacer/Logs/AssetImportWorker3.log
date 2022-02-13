@@ -1,0 +1,21 @@
+Using pre-set license
+Built from '2021.1/staging' branch; Version is '2021.1.2f1 (e5d502d80fbb) revision 15062274'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Enterprise LTSC 2019; OS build 17763.2565; Version 1809; 64bit' Language: 'ru' Physical Memory: 8072 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2021.1.2f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker3
+-projectPath
+D:/Programs/Unity/git/ar-racer/ARRacer
+-logFile
+Logs/AssetImportWorker3.log
+-srvPort
+64024
+Successfully changed project path to: D:/Programs/Unity/git/ar-racer/ARRacer
+D:/Programs/Unity/git/ar-racer/ARRacer
+Using Asset Import Pipeline V2.
