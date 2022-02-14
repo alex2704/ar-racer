@@ -52,7 +52,7 @@ public class ProgramManager : MonoBehaviour
 
         if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began)
         {
-            Instantiate(VehiclePrefab, hits[0].pose.position, VehiclePrefab.transform.rotation);
+            Vehicle = Instantiate(VehiclePrefab, hits[0].pose.position, VehiclePrefab.transform.rotation);
             //Vehicle.SetActive(true);
         }
     }

@@ -26,20 +26,24 @@ public class LeftRightButtons : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
         if(isPressed)
         {
+            float myDirection = vehicle.transform.eulerAngles.y;
+            Vector3 vectorDirection = Quaternion.Euler(0, myDirection, 0) * Vector3.forward;
+
             switch (direction)
             {
                 case Direction.Left:
+                    vehicle.transform.Translate(vectorDirection * Time.deltaTime, Space.World);
                     vehicle.transform.Rotate(0f, -0.5f, 0f, Space.World);
                     break;
                 case Direction.Right:
-                    //vehicle.transform.Translate(new Vector3(0.5f, 0f, 0.5f) * Time.deltaTime, Space.World);
+                    vehicle.transform.Translate(vectorDirection * Time.deltaTime, Space.World);
                     vehicle.transform.Rotate(0f, 0.5f, 0f, Space.World);
                     break;
                 case Direction.Forward:
-                    vehicle.transform.Translate(Vector3.forward * Time.deltaTime, Space.World);
+                    vehicle.transform.Translate(vectorDirection * Time.deltaTime, Space.World);
                     break;
                 case Direction.Back:
-                    vehicle.transform.Translate(Vector3.back * Time.deltaTime, Space.World);
+                    vehicle.transform.Translate(-vectorDirection * Time.deltaTime, Space.World);
                     break;
                 default:
                     break;
