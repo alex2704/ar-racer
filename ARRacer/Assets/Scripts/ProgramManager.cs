@@ -8,16 +8,21 @@ public class ProgramManager : MonoBehaviour
 {
     public GameObject PlaneMarkerPrefab;
     public GameObject Vehicle;
+    public bool IsVehicleVisible;
     private ARRaycastManager ARRaycastManagerScript;
     private Vector2 TouchPosition;
+    public GameObject VehiclePrefab;
 
     // Start is called before the first frame update
     void Start()
     {
+        Vehicle = Instantiate(VehiclePrefab, new Vector3(0f, -0.12f, 0.52f), VehiclePrefab.transform.rotation);
+
         ARRaycastManagerScript = FindObjectOfType<ARRaycastManager>();
 
         PlaneMarkerPrefab.SetActive(false);
         //Vehicle.SetActive(false);
+        IsVehicleVisible = false;
     }
 
     // Update is called once per frame
@@ -51,6 +56,7 @@ public class ProgramManager : MonoBehaviour
         {
             Instantiate(Vehicle, hits[0].pose.position, Vehicle.transform.rotation);
             //Vehicle.SetActive(true);
+            IsVehicleVisible = true;
         }
     }
 }
