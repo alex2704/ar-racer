@@ -7,14 +7,17 @@ using UnityEngine.XR.ARSubsystems;
 public class ProgramManager : MonoBehaviour
 {
     public GameObject PlaneMarkerPrefab;
+    public GameObject VehiclePrefab;
     public GameObject Vehicle;
     private ARRaycastManager ARRaycastManagerScript;
     private Vector2 TouchPosition;
 
-    // Start is called before the first frame update
     void Start()
     {
         ARRaycastManagerScript = FindObjectOfType<ARRaycastManager>();
+
+        //Vehicle = Instantiate(VehiclePrefab, new Vector3(0f, -0.32f, 2f), VehiclePrefab.transform.rotation);
+
 
         PlaneMarkerPrefab.SetActive(false);
         //Vehicle.SetActive(false);
@@ -49,7 +52,7 @@ public class ProgramManager : MonoBehaviour
 
         if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began)
         {
-            Instantiate(Vehicle, hits[0].pose.position, Vehicle.transform.rotation);
+            Instantiate(VehiclePrefab, hits[0].pose.position, VehiclePrefab.transform.rotation);
             //Vehicle.SetActive(true);
         }
     }
