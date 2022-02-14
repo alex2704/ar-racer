@@ -9,11 +9,12 @@ public class LeftRightButtons : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     public GameObject vehicle;
     public ProgramManager programManager;
     bool isPressed = false;
+    public Vehicle vehicleInstance;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -23,27 +24,27 @@ public class LeftRightButtons : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         {
             vehicle = programManager.Vehicle;
         }
-
-        if(isPressed)
+        if(GetComponent<Vehicle>() != null && vehicleInstance == null)
         {
-            float myDirection = vehicle.transform.eulerAngles.y;
-            Vector3 vectorDirection = Quaternion.Euler(0, myDirection, 0) * Vector3.forward;
+            vehicleInstance = FindObjectsOfType<Vehicle>()[0];
+            return;
+        }
 
+        if (isPressed)
+        {
             switch (direction)
             {
                 case Direction.Left:
-                    vehicle.transform.Translate(vectorDirection * Time.deltaTime, Space.World);
-                    vehicle.transform.Rotate(0f, -0.5f, 0f, Space.World);
+                    vehicleInstance.direction = vehicleInstance.direction - new Vector3(vehicleInstance.direction.x, vehicleInstance.direction.y + 1.0f, vehicleInstance.direction.z) * Time.deltaTime;
                     break;
                 case Direction.Right:
-                    vehicle.transform.Translate(vectorDirection * Time.deltaTime, Space.World);
-                    vehicle.transform.Rotate(0f, 0.5f, 0f, Space.World);
+                    vehicleInstance.direction = vehicleInstance.direction + new Vector3(vehicleInstance.direction.x, vehicleInstance.direction.y + 1.0f, vehicleInstance.direction.z) * Time.deltaTime;
                     break;
                 case Direction.Forward:
-                    vehicle.transform.Translate(vectorDirection * Time.deltaTime, Space.World);
+                    vehicleInstance.speed = vehicleInstance.speed + (vehicleInstance.accelerate * Time.deltaTime);
                     break;
                 case Direction.Back:
-                    vehicle.transform.Translate(-vectorDirection * Time.deltaTime, Space.World);
+                    vehicleInstance.speed = vehicleInstance.speed - (vehicleInstance.accelerate * Time.deltaTime) * 0.5f;
                     break;
                 default:
                     break;

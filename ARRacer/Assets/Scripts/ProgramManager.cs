@@ -26,7 +26,7 @@ public class ProgramManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject[] vehicles = GameObject.FindGameObjectsWithTag("Vehicle");
+        GameObject[] vehicles = GameObject.FindGameObjectsWithTag("Vehicle"); 
 
         if (vehicles.Length < 1)
         {
