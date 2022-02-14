@@ -24,7 +24,7 @@ public class LeftRightButtons : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         {
             vehicle = programManager.Vehicle;
         }
-        if(GetComponent<Vehicle>() != null && vehicleInstance == null)
+        if(GetComponent<Vehicle>() != null || vehicleInstance == null)
         {
             vehicleInstance = FindObjectsOfType<Vehicle>()[0];
             return;
